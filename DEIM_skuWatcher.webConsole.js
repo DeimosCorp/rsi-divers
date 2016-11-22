@@ -4,7 +4,7 @@ window.DEIM_skuWatcher = {
 	
 	autoAddToCartShipSkuByShipId: function(shipId)
 	{
-		if (DEIM_skuWatcher.watchShipId===null && shipId!==null) {
+		if (DEIM_skuWatcher.watchShipId===null) {
 			var detectedShipInfo = DEIM_skuWatcher.detectShipFromShipStatsApp();
 			if(detectedShipInfo.id===null) {
 				var msgErr = "Cannot auto-detect a specific ship on this page";
@@ -96,4 +96,3 @@ window.DEIM_skuWatcher = {
 // RSI.ShipStatsApp.app.current_ship.attributes.id = 63
 // RSI.ShipStatsApp.app.current_ship.attributes.name
 DEIM_skuWatcher.autoAddToCartShipSkuByShipId();
-
