@@ -19,7 +19,6 @@ toggleZ = keyboard.getPressed(Key.End)          #Toggle Zoom
 toggleL = keyboard.getPressed(Key.Delete)       #Toggle Lean/Strafe
 
 
-
 #=========================================================#
 def update():
     yaw = trackIR.yaw
@@ -73,6 +72,9 @@ if starting:
     trackIR.update += update    
 
 if toggleHT:
+   speech.say("tracking to mouse")
+   if(enabledHT):
+      speech.say("off")
    enabledHT = not enabledHT
 
 if toggleZ:
