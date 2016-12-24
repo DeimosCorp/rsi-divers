@@ -17,16 +17,22 @@ def toIntSafe(value):
 
 def update():
 
+	yaw = 0
+	pitch = 0
+	roll = 0
 	if (enabledHT):
 		yaw = filters.mapRange(trackIR.yaw, -90, 90, -vJoy[0].axisMax, vJoy[0].axisMax)
 		pitch = filters.mapRange(trackIR.pitch, -90, 90, -vJoy[0].axisMax, vJoy[0].axisMax)
 		roll = filters.mapRange(trackIR.roll, -50, 50, -vJoy[0].axisMax, vJoy[0].axisMax)
-		vJoy[0].x = toIntSafe(yaw)
-		vJoy[0].y = toIntSafe(pitch)
-		vJoy[0].z = toIntSafe(roll)
+	vJoy[0].x = toIntSafe(yaw)
+	vJoy[0].y = toIntSafe(pitch)*3
+	vJoy[0].z = toIntSafe(roll)
 
 if starting:
     trackIR.update += update
     
 if toggleHT:
+   speech.say("tracking to v-joy")
+   if(enabledHT):
+      speech.say("off")
    enabledHT = not enabledHT
